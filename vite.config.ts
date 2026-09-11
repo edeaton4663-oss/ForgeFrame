@@ -5,11 +5,11 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
   server: {
-    // Setting this to true permits Vite to respond to any incoming Railway host domain securely
-    allowedHosts: true
+    // This allows the dev server to accept any dynamic subdomain on Railway
+    allowedHosts: ['.railway.app']
   },
   preview: {
-    // This catches the preview container server and unblocks the request layout
-    allowedHosts: true
+    // This allows the preview server to accept any dynamic subdomain on Railway
+    allowedHosts: ['.railway.app']
   }
 });
