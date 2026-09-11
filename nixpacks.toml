@@ -1,0 +1,7 @@
+# Explicit configuration to tell Railway how to build and start your Express + Vite app
+
+[build]
+cmds = ["npm install", "npm run build"]
+
+[start]
+cmd = "node server.mjs"
