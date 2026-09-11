@@ -3,8 +3,8 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
-  // Force assets to link directly to your repository folder path
-  base: '/ForgeFrame/',
+  // Overriding with an empty string forces relative asset asset injection loops
+  base: '',
   server: {
     host: '0.0.0.0',
     allowedHosts: 'all'
