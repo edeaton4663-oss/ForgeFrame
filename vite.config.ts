@@ -5,10 +5,10 @@ export default defineConfig({
   plugins: [react()],
   server: {
     host: '0.0.0.0',
-    allowedHosts: ['.railway.app', 'forgeframe-production.up.railway.app']
+    allowedHosts: '*'
   },
   preview: {
     host: '0.0.0.0',
-    allowedHosts: ['.railway.app', 'forgeframe-production.up.railway.app']
+    allowedHosts: '*'
   }
 });
