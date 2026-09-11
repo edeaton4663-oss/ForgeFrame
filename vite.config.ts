@@ -5,5 +5,9 @@ export default defineConfig({
   plugins: [react()],
   server: {
     port: 3000,
+    middlewareMode: false,
+  },
+  preview: {
+    port: 4173,
   },
 })
