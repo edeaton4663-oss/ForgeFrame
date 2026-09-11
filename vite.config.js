@@ -5,12 +5,10 @@ export default defineConfig({
   plugins: [react()],
   server: {
     host: '0.0.0.0',
-    // Bypasses the proxy check entirely
-    allowedHosts: () => true
+    allowedHosts: ['.railway.app', 'forgeframe-production.up.railway.app']
   },
   preview: {
     host: '0.0.0.0',
-    // Bypasses the preview proxy check entirely
-    allowedHosts: () => true
+    allowedHosts: ['.railway.app', 'forgeframe-production.up.railway.app']
   }
 });
