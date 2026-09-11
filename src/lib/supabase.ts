@@ -1,11 +1,11 @@
 import { createClient } from '@supabase/supabase-js';
 
-// Initialize the Supabase Client SDK using standard environment variables
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || import.meta.env.VITE_SUPABASE_URL || '';
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || import.meta.env.VITE_SUPABASE_ANON_KEY || '';
+// Clean, cross-compatible variable check for Vite applications
+const supabaseUrl = (import.meta.env?.VITE_SUPABASE_URL) || '';
+const supabaseAnonKey = (import.meta.env?.VITE_SUPABASE_ANON_KEY) || '';
 
 if (!supabaseUrl || !supabaseAnonKey) {
-  throw new Error('Missing Supabase environment variables. Please configure VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY.');
+  console.warn("Supabase credentials missing. Check your environment configuration variables.");
 }
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey);
@@ -26,7 +26,7 @@ export const deductGameCredit = async (userId: string): Promise<boolean> => {
 
     if (error) {
       // Check if error message indicates insufficient credits
-      if (error.message.includes('Insufficient credits')) {
+      if (error.message.includes('Insufficient credits') || error.message.includes('INSUFFICIENT_CREDITS')) {
         throw new Error('INSUFFICIENT_CREDITS');
       }
       throw new Error(error.message);
@@ -34,6 +34,9 @@ export const deductGameCredit = async (userId: string): Promise<boolean> => {
 
     return data === true;
   } catch (err: any) {
+    if (err.message === 'INSUFFICIENT_CREDITS') {
+      throw err;
+    }
     throw new Error(err.message || 'Failed to deduct game credit');
   }
 };
