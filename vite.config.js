@@ -1,10 +1,15 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import path from 'path';
 
 export default defineConfig({
   plugins: [react()],
   base: '/',
-  // Prevents Vite from crashing if your Supabase keys are not added yet
+  build: {
+    // Explicitly forces Vite to output straight to a clean 'dist' folder
+    outDir: 'dist',
+    emptyOutDir: true,
+  },
   define: {
     'process.env': {}
   },
