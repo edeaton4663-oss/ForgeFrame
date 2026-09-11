@@ -4,15 +4,16 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "start": "node server.js"
+    "build": "tsc && vite build",
+    "start": "npm run build && node server.mjs"
   },
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "@supabase/supabase-js": "^2.38.0",
     "lucide-react": "^0.263.1",
-    "serve": "^14.2.4"
+    "serve": "^14.2.4",
+    "express": "^4.19.2"
   },
   "devDependencies": {
     "@types/react": "^18.2.0",
