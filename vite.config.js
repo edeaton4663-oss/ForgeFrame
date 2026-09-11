@@ -5,12 +5,12 @@ export default defineConfig({
   plugins: [react()],
   server: {
     host: '0.0.0.0',
-    // Removed the brackets here
-    allowedHosts: 'all'
+    // Bypasses the proxy check entirely
+    allowedHosts: () => true
   },
   preview: {
     host: '0.0.0.0',
-    // Removed the brackets here
-    allowedHosts: 'all'
+    // Bypasses the preview proxy check entirely
+    allowedHosts: () => true
   }
 });
