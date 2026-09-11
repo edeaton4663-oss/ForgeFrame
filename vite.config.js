@@ -1,15 +1,15 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
+// https://vitejs.dev
 export default defineConfig({
   plugins: [react()],
   server: {
     host: '0.0.0.0',
-    allowedHosts: 'all'
+    allowedHosts: true
   },
   preview: {
     host: '0.0.0.0',
-    allowedHosts: 'all'
+    allowedHosts: true
   }
 });
-
