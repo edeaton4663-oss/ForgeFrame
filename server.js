@@ -4,8 +4,11 @@ import { dirname, join } from 'path';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const app = express();
-const port = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server running securely on port ${PORT}`);
+});
 // Serve static files from dist directory
 app.use(express.static(join(__dirname, 'dist')));
 
